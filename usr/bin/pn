@@ -1,0 +1,22 @@
+#!/bin/bash
+
+Package_Name="/usr/scripts/PackageName"
+
+case "$1" in
+    -1)
+        $Package_Name/1.sh
+        ;;
+    -2)
+        $Package_Name/2.sh
+        ;;
+    *)
+        echo
+        echo "Package Shell V0.1 By MrR736 : 2024-10-12"
+        echo
+        echo "Usage: pn <Commands>"
+        echo
+        echo "<Commands>"
+        echo "  -1 : to run in $Package_Name"
+        echo "  -2 : to run in $Package_Name"
+        ;;
+esac

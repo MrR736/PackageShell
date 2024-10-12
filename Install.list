@@ -1,0 +1,3 @@
+Install_Name=Package Name
+Install=/usr/scripts/PackageName
+Install_Command=/usr/bin/pn
