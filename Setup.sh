@@ -49,9 +49,6 @@ for list_file in "${list_files[@]}"; do
     echo "Setting up $INSTALL_NAME_FILE..."
 
     # Remove files if variables are set
-    if [[ -n "$INSTALL_FILE" ]]; then
-        rm -rf "$INSTALL_FILE"
-    fi
 
     if [[ -n "$INSTALL_COMMAND_FILE" ]]; then
         rm -rf "$INSTALL_COMMAND_FILE"
