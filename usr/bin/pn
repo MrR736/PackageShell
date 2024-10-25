@@ -1,17 +1,21 @@
 #!/bin/bash
 
-Package_Name="/usr/scripts/PackageName"
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd $DIR
+Package_Name="../scripts/PackageName"
 
 case "$1" in
     -1)
+        chmod +x $Package_Name/1.sh &> /dev/null
         $Package_Name/1.sh
         ;;
     -2)
+        chmod +x $Package_Name/2.sh &> /dev/null
         $Package_Name/2.sh
         ;;
     *)
         echo
-        echo "Package Shell V0.1 By MrR736 : 2024-10-12"
+        echo "Package Shell V0.2 By MrR736 : 2024-10-24"
         echo
         echo "Usage: pn <Commands>"
         echo
