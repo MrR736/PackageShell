@@ -1,10 +1,10 @@
 #!/bin/bash
 
-SCRIPTS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-ZZ_BIN="$SCRIPTS_DIR/7zz"
-Zips_DIR=$SCRIPTS_DIR/*.7z
+DIR="$(dirname "$(readlink -f "${0}")")"
+ZZ_BIN="$DIR/7zz"
+Zips_DIR=$DIR/*.7z
 
-if [[ ! -e "$SCRIPTS_DIR/Install.list" ]]; then
+if [[ ! -e "$DIR/Install.list" ]]; then
     echo -e "\e[31mE: Not Found Install.list\e[0m"
     exit 1
 fi
@@ -26,7 +26,7 @@ fi
 
 # Check for .list files
 shopt -s nullglob  # Avoid issues with empty glob results
-list_files=($SCRIPTS_DIR/Install.list)
+list_files=($DIR/Install.list)
 
 for list_file in "${list_files[@]}"; do
     if [[ ! -s "$list_file" ]]; then
@@ -63,7 +63,7 @@ for list_file in "${list_files[@]}"; do
     echo "Processe Package..."
 
     for zip_file in $Zips_DIR; do
-        Install_Zips="${zip_file#$SCRIPTS_DIR/}"
+        Install_Zips="${zip_file#$DIR/}"
         if $ZZ_BIN x "$zip_file" -O"/" -y > /dev/null; then
            echo "Extract $Install_Zips Successfully."
         else

@@ -1,15 +1,13 @@
 #!/bin/bash
 
-DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DIR="$(dirname "$(readlink -f "${0}")")"
 
-if [ "$(uname -m)" == "x86_64" ]; then
-    $DIR/7zip_Data/bin/x86_64/7zz $@
-elif [ "$(uname -m)" =~ "i[3-6]86" ]; then
-    $DIR/7zip_Data/bin/x86/7zz $@
-elif [[ "$(uname -m)" == "armv7l" || "$(uname -m)" == "armv6l" || "$(uname -m)" == "armv5tel" ]]; then
-    $DIR/7zip_Data/bin/arm32/7zz $@
+if [[ "$(uname -m)" == "x86_64" || "$(uname -m)" =~ ^i[3-6]86$ ]]; then
+    $DIR/Tools/7zz.i386 "$@"
+elif [ "$(uname -m)" == "armv7l" ]; then
+    $DIR/Tools/7zz.arm "$@"
 elif [ "$(uname -m)" == "aarch64" ]; then
-    $DIR/7zip_Data/bin/arm64/7zz $@
+    $DIR/Tools/7zz.aarch64 "$@"
 else
     echo -e "\e[31mE: Unknown Architecture: $(uname -m) from 7zip\e[0m" >&2
     exit 1

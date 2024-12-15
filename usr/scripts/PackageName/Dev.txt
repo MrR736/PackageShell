@@ -1,1 +1,5 @@
 All Shell Script Files Is Executable
+
+chmod +x ./1.sh
+
+chmod +x ./2.sh

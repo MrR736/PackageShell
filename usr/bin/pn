@@ -1,8 +1,8 @@
 #!/bin/bash
 
-DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-cd $DIR
-Package_Name="../scripts/PackageName"
+DIR="$(dirname "$(readlink -f "${0}")")"
+
+Package_Name=$(realpath $DIR/../scripts/PackageName)
 
 case "$1" in
     -1)
@@ -15,12 +15,14 @@ case "$1" in
         ;;
     *)
         echo
-        echo "Package Shell V0.2 By MrR736 : 2024-10-24"
+        echo "Package Shell V0.3 By MrR736 : 2024-15-12"
         echo
         echo "Usage: pn <Commands>"
         echo
         echo "<Commands>"
-        echo "  -1 : to run in $Package_Name"
-        echo "  -2 : to run in $Package_Name"
+        echo "  -1 : to run in $Package_Name/1.sh"
+        echo "  -2 : to run in $Package_Name/2.sh"
+        echo
+        echo "Github home page: <https://github.com/MrR736>"
         ;;
 esac

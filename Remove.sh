@@ -5,7 +5,7 @@ SCRIPTS_BIN="/usr/bin/pn"
 SCRIPTS_FOLDER="/usr/scripts/PackageName"
 
 if [ "$(whoami)" != "root" ]; then
-    echo -e "\e[31mE: You have to run as Superuser\e[0m"
+    echo -e "\e[31mE: \e[0mYou have to run as Superuser"
     exit 1
 fi
 
@@ -14,7 +14,7 @@ if [[ ! -e "$SCRIPTS_BIN" ]]; then
     exit 1
 else
     if ! command -v rm &> /dev/null; then
-        echo -e "\e[31mE: rm Is Not Installed.\e[0m"
+        echo -e "\e[31mE: \e[0mrm Is Not Installed."
         exit 1
     else
         echo "Remove $COMMAND_NAME..."
